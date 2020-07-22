@@ -1,0 +1,73 @@
+#:kivy 1.11.1
+#:import inf math.inf 
+<Case@Button>:
+    border: (10,10,10,10)
+    background_color: (0,0,0.8,1)
+    text: ''
+    font_size: '70sp'
+
+<BoxTicTacToe>: #our root 
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    canvas:
+        Color:
+            rgba:(1,.11,.1,.6)
+        Rectangle:
+            size: self.size
+    Label:
+        markup: True
+        id: title
+        size_hint_y : 0.25
+        text:'[color=FF6666]TicTacToe[/color]'
+        font_size: '100sp'
+
+    GridLayout:
+        spacing: 10
+        cols : 3
+        rows : 3
+        #try to extend the gap between the spaces
+        Case:
+            id: bt0
+            on_press: if root.tictactoe[0]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(0,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt1
+            on_press: if root.tictactoe[1]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(1,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt0.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt2
+            on_press: if root.tictactoe[2]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(2,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt0.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt3
+            on_press: if root.tictactoe[3]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(3,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt0.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt4
+            on_press: if root.tictactoe[4]==inf and root.play==1:  root.imageCell();self.text = root.image; root.inserting(4,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt0.text='';bt5.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt5
+            on_press: if root.tictactoe[5]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(5,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt0.text='';bt6.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt6
+            on_press: if root.tictactoe[6]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(6,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt0.text='';bt7.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt7
+            on_press: if root.tictactoe[7]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(7,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt0.text='';bt8.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        Case:
+            id: bt8
+            on_press: if root.tictactoe[8]==inf and root.play==1: root.imageCell();self.text = root.image; root.inserting(8,root.tic);root.selecCell();
+            on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt0.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
+        
+
+    
+    Button:
+        text:'Play'
+        size_hint_y : 0.25
+        font_size:'70sp'
+        on_press: title.text = '[color=00000]Play !![/color]';root.play=1; root.reset_game()
