@@ -9,6 +9,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
 #Kivy properties will help to interchange data between the py and the kv file
 from kivy.properties import NumericProperty, StringProperty, ObjectProperty
 
@@ -52,6 +53,7 @@ class BoxTicTacToe(BoxLayout):
             popup = Popup(title='Gameover', content=Label(text='Draw'),size_hint_y=0.25,size_hint_x = 0.75)
             popup.open()
             self.tictactoe = [inf for i in range(9)]
+            #write in the statistics file
             return(2)
         for L in rows:
             sum = self.tictactoe[L[0]]+self.tictactoe[L[1]]+self.tictactoe[L[2]]
@@ -60,29 +62,37 @@ class BoxTicTacToe(BoxLayout):
                 popup = Popup(title='Gameover', content=Label(text='Congratulations!! Player O has won'),size_hint_y=0.25,size_hint_x = 0.75)
                 popup.open()
                 self.tictactoe = [inf for i in range(9)]
+                #write in the statistics file
                 return(0)
             if sum==3:
                 self.play = 0
                 popup = Popup(title='Gameover', content=Label(text='Congratulations!! Player X has won'),size_hint_y=0.25,size_hint_x = 0.75)
                 popup.open()
                 self.tictactoe = [inf for i in range(9)]
+                #write in the statistics file
                 return(1)
         #checks whether a player has won and raises the final message
     
-    """def reset_game(self):
+    def reset_game(self):
         self.tictactoe = [inf for i in range(9)]
-        self.tic = 1"""
+        self.tic = 1
+
+class Statistics(BoxLayout):
+    def read_data(self):
+        pass
+    
+
         
 
 class TicTacToeApp(App):
     icon = 'cover_ttt.png'
     def build(self):
         self.title = "TIC-TAC-TOE"
-        
         return BoxTicTacToe()
+        #return Statistics()
 
 if __name__=='__main__':
-    Config.set('graphics','width','500')
-    Config.set('graphics','height','600')
+    Config.set('graphics','width','800')
+    Config.set('graphics','height','800')
     game = TicTacToeApp()
     game.run()

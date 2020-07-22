@@ -65,9 +65,32 @@
             on_release: if root.gameover() in [0,1,2]: self.text=''; bt1.text='';bt2.text = '';bt3.text='';bt4.text='';bt5.text='';bt6.text='';bt7.text='';bt0.text=''; title.text = '[color=FF6666]TicTacToe[/color]'
         
 
-    
-    Button:
-        text:'Play'
-        size_hint_y : 0.25
+    GridLayout:
+        cols:2
+        size_hint_y: 0.2
+        spacing: 30
+        Button:
+            text:'Play'
+            size_hint_y : 0.2
+            #size_hint_x : 0.2
+            font_size:'70sp'
+            on_press: title.text = '[color=00000]Play !![/color]';root.play=1; root.reset_game()
+        Button:
+            text:'Stats'
+            size_hint_y : 0.2
+            #size_hint_x : 0.2
+            font_size:'70sp'
+
+<Statistics>:
+    orientation:'vertical'
+    Label:
+        id:headline
+        text: 'Statistics'
         font_size:'70sp'
-        on_press: title.text = '[color=00000]Play !![/color]';root.play=1; root.reset_game()
+        size_hint_y:0.25
+    TextInput:
+        size_hint_y:0.8
+        text:'Statistics'
+    Button:
+        text:'Clear all'
+
